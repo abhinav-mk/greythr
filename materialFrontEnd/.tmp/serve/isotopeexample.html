@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery Isotope</title>
+<link rel="stylesheet" href="style.css">
+<script src="jquery-latest.js" type="text/javascript"></script>
+<script src="isotope.pkgd.min.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<script type="text/javascript">
+
+$(function(){
+// external js: isotope.pkgd.js
+
+// init Isotope
+var $grid = $('.grid').isotope({
+  itemSelector: '.room'
+});
+
+// store filter for each group
+ $('.button-group button').click(function(){ 
+        var selector = $(this).attr('data-filter');
+        $grid.isotope({
+            filter: selector,
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            }
+         });
+         return false;
+    });
+});
+</script>
+</head>
+<body>
+
+<div class="filters">
+
+  <div class="ui-group">
+    <h3>Floor</h3>
+    <div class="button-group js-radio-button-group">
+      <button class="button" data-filter=".first">First</button>
+      <button class="button" data-filter=".second">Second</button>
+      <button class="button" data-filter=".third">Third</button>
+    </div>
+  </div>
+
+  <div class="ui-group">
+    <h3>Size</h3>
+    <div class="button-group js-radio-button-group">
+      <button class="button" data-filter=".small">5</button>
+      <button class="button" data-filter=".wide">10</button>
+      <button class="button" data-filter=".big">20</button>
+      <button class="button" data-filter=".tall">40</button>
+    </div>
+  </div>
+
+  <div class="ui-group">
+    <h3>Shape</h3>
+    <div class="button-group js-radio-button-group">
+      <button class="button" data-filter=".round">round</button>
+      <button class="button" data-filter=".square">square</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="grid">
+  <div class="room small round first"><b>101</b><br>
+  	<i class="fa fa-wifi" aria-hidden="true"></i>
+  	<i class="fa fa-television" aria-hidden="true"></i>
+  	<i class="fa fa-picture-o" aria-hidden="true"></i>
+  </div>
+  <div class="room small round second">201</div>
+  <div class="room small round third">301</div>
+  <div class="room small square first">102</div>
+  <div class="room small square second">202</div>
+  <div class="room small square third">302
+  <i class="fa fa-picture-o" aria-hidden="true"></i></div>
+  <div class="room wide round first">103</div>
+  <div class="room wide round second"></div>
+  <div class="room wide round third"></div>
+  <div class="room wide square first">104
+  <i class="fa fa-picture-o" aria-hidden="true"></i></div>
+  <div class="room wide square second"></div>
+  <div class="room wide square third"></div>
+  <div class="room big round first">105</div>
+  <div class="room big round second"><br>
+  	<i class="fa fa-wifi" aria-hidden="true"></i></div>
+  <div class="room big round third"><br>
+  	<i class="fa fa-wifi" aria-hidden="true"></i></div>
+  <div class="room big square first">106
+  <i class="fa fa-picture-o" aria-hidden="true"></i></div>
+  <div class="room big square second"></div>
+  <div class="room big square third"></div>
+  <div class="room tall round first">107</div>
+  <div class="room tall round second"></div>
+  <div class="room tall round third"></div>
+  <div class="room tall square first">108</div>
+  <div class="room tall square second"><br>
+  	<i class="fa fa-wifi" aria-hidden="true"></i></div>
+  <div class="room tall square third"></div>
+</div>
+
+</body>
+</html> 

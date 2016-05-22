@@ -1,0 +1,37 @@
+<md-dialog flex="60" flex-xs="100">
+    <md-toolbar class="toolbar-default">
+        <div class="md-toolbar-tools">
+            <h2 flex translate>TAKE ATTENDANCE</h2>
+            <md-button class="md-icon-button" ng-click="vm.cancelClick()" aria-label="cancel">
+                <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="md-dialog-content">
+        <div layout="row" layout-padding>
+            <div flex layout="column" layout-align="center center">
+                <h3 translate>SELECT CLASS</h3>
+                <md-select placeholder="Pick" ng-model="classId">
+                    <md-option value="{{item.name}}" ng-selected="item.name == state_class" ng-repeat='item in classList'>{{item.name}}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-content class="md-dialog-content">
+        <div layout="row" layout-padding>
+            <div flex layout="column" layout-align="center center">
+                <h3 translate>SELECT DATE</h3>
+                <md-datepicker ng-model="vm.start" md-placeholder="'DASHBOARDS.SALES.DATE-CHANGE.START-DATE' | translate"></md-datepicker>
+            </div>
+        </div>
+    </md-dialog-content>
+
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="vm.cancelClick()" aria-label="{{'GENERAL.CANCEL' | translate}}" translate="CANCEL"></md-button>
+        <md-button ng-click="vm.okClick()" class="md-primary" aria-label="{{GENERAL.OK | translate}}" translate="BEGIN"></md-button>
+    </md-dialog-actions>
+</md-dialog>

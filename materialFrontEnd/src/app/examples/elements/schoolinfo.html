@@ -1,0 +1,86 @@
+<md-card flex="90" class="ng-scope md-cyan-theme flex-90">
+    <div ng-controller="SchoolInfoController as vm" class="ng-scope">
+    	<md-content class="md-padding" layout="column">
+	            <form>
+	                <md-input-container class="md-block">
+	                    <label>Name</label>
+	                    <input type="text" ng-model="school_name">
+	                </md-input-container>
+	                <h3>Class and Sections</h3>
+		                <md-card flex>
+		                	<h4>Add new Class</h4>
+		                	<md-input-container class="md-block">
+		                		<label>Class</label>
+		                    	<input type="text" ng-model="newclass">
+		                   	</md-input-container>
+		                    <md-input-container class="md-block">	
+		                    	<label>Section</label>
+		                    	<input type="text" ng-model="newsection">
+		                    	</md-input-container>
+		                    <md-input-container class="md-block">	
+		                    	<label>Subjects</label>
+		                    	<input type="text" ng-model="newsubjects" placeholder="Ex: English,Hindi">
+	                		</md-input-container>
+			                <div layout="row" layout-align="center">
+			                	<md-button ng-click="addclass()">Add</md-button>
+			                </div>
+		                </md-card>
+	                	<md-card flex ng-repeat="scope in school_scope">
+	                		<md-input-container class="md-block">
+		                		<label>Class</label>
+		                    	<input type="text" ng-model="scope.class">
+		                   	</md-input-container>
+		                    <md-input-container class="md-block">	
+		                    	<label>Section</label>
+		                    	<input type="text" ng-model="scope.section">
+		                    	</md-input-container>
+		                    <md-input-container class="md-block">	
+		                    	<label>Subjects</label>
+		                    	<input type="text" ng-model="scope.subjects" ng-change="updatesubjects($index)">
+	                		</md-input-container>
+	                		<div layout="row" layout-align="center">
+	                			<md-button ng-click="deleteclass($index)">Delete</md-button>
+	                		</div>
+	                	</md-card>
+	                <h3>Roles and Grants</h4>
+	                	<md-card flex>
+	                		<h4>Add new Role</h4>
+	                		<md-input-container class="md-block">
+		                		<label>Role</label>
+		                    	<input type="text" ng-model="newrole">
+		                   	</md-input-container>
+		                   	<h5>Permissions</h5>
+		                   	<div ng-repeat="permission in school_permissions">
+			                   	<md-checkbox ng-checked="exists(permission, newpermissions)" ng-click="toggle(permission, newpermissions)">
+				                	{{ permission }}
+				              	</md-checkbox>
+				            </div>
+	                		<div layout="row" layout-align="center">
+	                			<md-button ng-click="addgrant()">Add</md-button>
+	                		</div>
+	                	</md-card>
+	                	<md-card flex ng-repeat="grant in school_grants">
+	                		<md-input-container class="md-block">
+		                		<label>Roles</label>
+		                    	<input type="text" ng-model="grant.role">
+		                   	</md-input-container>
+		                   	<h5>Permissions</h5>
+		                   	<div ng-repeat="permission in school_permissions">
+			                   	<md-checkbox ng-checked="exists(permission, grant.permissions)" ng-click="toggle(permission, grant.permissions)">
+				                	{{ permission }}
+				              	</md-checkbox>
+				            </div>
+	                		<div layout="row" layout-align="center">
+	                			<md-button ng-click="deletegrant($index)">Delete</md-button>
+	                		</div>
+	                	</md-card>
+	                <div layout="row" layout-align="center">
+	                    <md-button ng-click="editSchoolData()">Update</md-button>
+	                </div>
+	                <div layout="row" layout-align="center">
+	                    <md-button ng-click="cancelEdit()">Cancel</md-button>
+	                </div>	
+	            </form>
+	    </md-content>
+	</div>
+</md-card>

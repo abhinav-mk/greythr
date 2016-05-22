@@ -1,0 +1,175 @@
+
+<md-dialog flex="60" flex-xs="100">
+    <md-toolbar class="toolbar-default">
+        <div class="md-toolbar-tools">
+            <h2 flex translate>Create User</h2>
+            <md-button class="md-icon-button" ng-click="vm.cancelClick()" aria-label="cancel">
+                <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="md-dialog-content">
+        <!-- <div layout="row" layout-padding>
+            <div flex layout="column" layout-align="center center">
+                <h3 translate>SELECT CLASS</h3>
+                <md-select placeholder="Pick" ng-model="classId">
+                    <md-option value="{{item.name}}" ng-selected="item.name == state_class" ng-repeat='item in classList'>{{item.name}}</md-option>
+                </md-select>
+            </div>
+        </div> -->
+                            <!-- <md-card flex="90" class="ng-scope md-cyan-theme flex-90">
+                        
+                                    <h3>User Details</h3>
+                                    <form>
+                                        <md-input-container class="md-block">
+                                            <label>Name</label>
+                                            <input type="text" ng-model="user_name">
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label>Roll Number</label>
+                                            <input type="text" ng-model="user_rollno">
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label>Role</label>
+                                            <input type="text" ng-model="user_role">
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label>Email</label>
+                                            <input type="text" ng-model="user_email">
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label>Phone Number</label>
+                                            <input type="text" ng-model="user_phno">
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label>Class and Section</label>
+                                            <input type="text" ng-model="user_classSection">
+                                        </md-input-container>
+                                        <md-input-container class="md-block">
+                                            <label>Password</label>
+                                            <input type="text" ng-model="user_password">
+                                        </md-input-container>
+                                        <div layout="row" layout-align="center">
+                                            <md-button ng-click="vm.okClick()">Create</md-button>
+                                        </div>
+                                    </form>
+                        
+                            </md-card> --> 
+                <form name="form2">
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input type="name" label="name" name="name" ng-model="user_name" required>
+                        <div ng-messages="form2.name.$error" ng-if="form2.name.$dirty">
+                            <div ng-message when="required"><span translate>Please enter a Name</span></div>
+                            <div ng-message when="name"><span translate>Please enter a valid Name</span></div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Roll Number</label>
+                        <input type="text" ng-model="user_rollno" >
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                    <!--  --><label>Role</label><br>
+                        <md-radio-group ng-model="user_role" class="md-primary">
+                            <md-radio-button ng-repeat="d in roles_list"
+                                ng-value="d"
+                                ng-disabled="privilege"
+                                ng-class="{'md-align-top-left': $index==1}" >
+                                 {{ d }}<br/>
+                            </md-radio-button>
+                         </md-radio-group>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label for="email" translate>Email</label>
+                        <input type="email" name="email" label="email" ng-model="user_email" required>
+                        <div ng-messages="form2.email.$error" ng-if="form2.email.$dirty">
+                            <div ng-message when="required"><span translate>Please enter an Email address</span></div>
+                            <div ng-message when="email"><span translate>Please enter a valid Email address</span></div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Phone Number</label>
+                        <input type="text" ng-model="user_phno">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Password</label>
+                        <input type="password" label="password" ng-model="user_password" required>
+                        <div ng-messages="form2.password.$error" ng-if="form2.password.$dirty">
+                            <div ng-message when="required"><span translate>Please enter a Password</span></div>
+                            <div ng-message when="password"><span translate>Please Enter a valid Password</span></div>
+                        </div>
+                    </md-input-container>
+                    <div class="md-block">
+                    <style type="text/css">
+                            .chipsdemoCustomInputs md-content.autocomplete {
+                              min-height: 200px; }
+
+                            .chipsdemoCustomInputs input[type=number] {
+                              width: 110px; }
+
+                            .chipsdemoCustomInputs .veggie-option {
+                              float: left;
+                              width: 100px;
+                              box-sizing: border-box;
+                              padding: 0 8px; }
+
+                            .chipsdemoCustomInputs .veggie-option .md-item-text {
+                              padding: 8px;
+                              background: #f0f0f0;
+                              border-radius: 3px; }
+
+                            .chipsdemoCustomInputs .veggie-option .md-item-text h3,
+                            .chipsdemoCustomInputs .veggie-option .md-item-text p {
+                              padding: 0;
+                              margin: 0; }
+                          </style>
+
+                        <label>Class and Section</label>
+                        <div flex="50" ng-repeat="item in classlist">
+                          <md-checkbox ng-checked="exists(item, user_cs)" ng-click="toggle(item, user_cs)">
+                            {{ item }}
+                          </md-checkbox>
+                          <md-content class="md-padding" layout="column" ng-if="exists(item, user_cs)">
+
+                            <md-chips ng-model="selectedVegetables[$index]" md-autocomplete-snap="" md-transform-chip="transformChip($chip)" md-require-match="autocompleteDemoRequireMatch" ng-disabled="privilege">
+                              <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="itm in querySearch(searchText, item)" md-item-text="itm" placeholder="Add subject(s)">
+                                <span md-highlight-text="searchText">{{itm}}</span>
+                              </md-autocomplete>
+                              <md-chip-template>
+                                <span>
+                                  <strong>{{$chip}}</strong>
+                                </span>
+                              </md-chip-template>
+                            </md-chips>
+
+                            <br>
+                            <h2 class="md-title">Subjects</h2>
+
+                            <md-list>
+                              <md-list-item class="md-0-line veggie-option" ng-repeat="veg in vegetables[$index]" layout="row" layout-wrap="">
+                                <div class="md-item-text md-whiteframe-z1" flex="">
+                                  <h5>{{veg}}</h5>
+                                </div>
+                              </md-list-item>
+                            </md-list>
+
+                          </md-content>
+              
+                        </div>
+                    </div><!-- 
+                    <hr> --><!-- 
+                    <div layout="row" layout-align="center">
+                        <md-button ng-click="createUserData()">Create</md-button>
+                    </div> -->
+                </form>
+
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="vm.cancelClick()" aria-label="{{'GENERAL.CANCEL' | translate}}" translate="Cancel"></md-button>
+        <md-button ng-click="vm.okClick()" class="md-primary" aria-label="{{GENERAL.OK | translate}}" translate="Create"></md-button>
+    </md-dialog-actions>
+</md-dialog>
+

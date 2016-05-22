@@ -1,0 +1,11 @@
+<center>
+	<md-card flex="30">
+		<md-list ng-cloak>
+		  <md-subheader class="md-no-sticky">School List</md-subheader><md-divider></md-divider>
+		  <md-list-item ng-repeat="school in schoolList">
+		    <p> {{ school.name }} </p>
+		  </md-list-item>
+		</md-list>  
+	</md-card>
+	<md-button class="md-raised" ng-click="createSchool()">Create New School</md-button>
+</center>

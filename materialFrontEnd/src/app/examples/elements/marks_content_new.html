@@ -1,0 +1,28 @@
+<md-card flex="90" class="ng-scope md-cyan-theme flex-60">
+  <form name="form3">
+	                <md-input-container class="md-block">
+	                    <label>Name</label>
+	                    <input type="name" label="name" name="name" ng-model="marks_name" required>
+	                    <div ng-messages="form3.name.$error" ng-if="form3.name.$dirty">
+                            <div ng-message when="required"><span translate>Please enter a Name</span></div>
+                            <div ng-message when="name"><span translate>Please enter a valid Name</span></div>
+                        </div>
+	                </md-input-container>
+	               
+	                <md-input-container class="md-block">
+	                    <label>Class and Section</label>
+	                    <input type="text" ng-model="marks_classSection" disabled>
+	                </md-input-container>
+	                <div id="div3">
+	                </div>
+	                
+	                
+  </form>
+  <table id="table6" class="display table table-bordered table-striped table-hover">
+          
+  </table>
+  <div layout="row" layout-align="center">
+  	<md-button ng-click="createMarks()">Create</md-button>
+  	<md-button ng-click="cancelCreate()">Cancel</md-button>
+  </div>
+</md-card> 

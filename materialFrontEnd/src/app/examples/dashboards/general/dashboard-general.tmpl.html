@@ -1,0 +1,28 @@
+<!--  -->
+  <md-content layout-padding ng-controller="GeneralController as vm">
+    <div>
+      <form name="userForm">
+        
+        <md-input-container class="md-block">
+          <label>Rule Description</label>
+          <input ng-model="description">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Rule Weightage</label>
+          <input type="number" ng-model="weightage">
+        </md-input-container>
+      </form>
+      <md-card ng-repeat="item in allRules">
+        <md-card-title>
+        {{item.description}}
+        </md-card-title>
+        <md-input-container class="md-block">
+          <label>Rule Weightage</label>
+          <input type="number" ng-model="weightage">
+        </md-input-container>
+      </md-card>
+      <md-button class="md-fab md-primary" aria-label="Use Android">
+          <i class="zmdi zmdi-edit"></i>
+        </md-button>
+    </div>
+</md-content>

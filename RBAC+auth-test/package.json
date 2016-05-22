@@ -1,0 +1,31 @@
+{
+  "name": "scaffold",
+  "description": "scaffold app description here",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "ejs": "latest",
+    "express": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "method-override": "latest",
+    "body-parser": "latest",
+    "errorhandler": "latest"
+  },
+  "devDependencies": {
+    "bower": "latest",
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express-server": "^0.4.17",
+    "grunt-mocha-test": "latest",
+    "grunt-open": "^0.2.3",
+    "load-grunt-tasks": "^0.4.0",
+    "mocha": "latest",
+    "supertest": "latest"
+  },
+  "scripts": {
+    "postinstall": "grunt test",
+    "test": "grunt test",
+    "start": "app.js"
+  }
+}

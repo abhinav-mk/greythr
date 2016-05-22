@@ -1,0 +1,72 @@
+<md-dialog flex="60" flex-xs="100">
+    <md-toolbar class="toolbar-default">
+        <div class="md-toolbar-tools">
+            <h2 flex translate>VIEW ATTENDANCE</h2>
+            <md-button class="md-icon-button" ng-click="vm.cancelClick()" aria-label="cancel">
+                <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="md-dialog-content">
+      <form class="event-dialog-form" name="eventForm">
+          <div layout="row" layout-padding>
+            <div flex layout="column" layout-align="center center">
+              <h3 translate>SELECT CLASS</h3>
+              <md-select placeholder="class" ng-model="classId">
+                <md-option value="{{item.name}}" ng-selected="item.name == state_class" ng-repeat='item in classList'>{{item.name}}</md-option>
+              </md-select>
+            </div>
+          </div>
+          <md-list ng-show="view_any_attendance">
+              <md-list-item layout="row" layout-align="space-between center">
+                <p translate>Someone specific?</p>
+                <md-switch class="md-secondary" ng-model="specificStudentSwitch" ng-change="specificStudentSwitchChanged()"></md-switch>
+              </md-list-item>
+              <div layout="column" ng-show="specificStudentSwitch">
+
+                <md-autocomplete
+                    ng-disabled="self.isDisabled"
+                    md-no-cache="self.noCache"
+                    md-selected-item="selectedItem"
+                    md-search-text-change="searchTextChange(self.searchText)"
+                    md-search-text="self.searchText"
+                    md-selected-item-change="selectedItemChange(item)"
+                    md-items="item in querySearch(self.searchText)"
+                    md-item-text="item.display"
+                    md-min-length="0"
+                    ng-click="searchTextChange();"
+                    placeholder="Enter student name or roll number">
+                  <md-item-template>
+                    <span md-highlight-text="self.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                  </md-item-template>
+                  <md-not-found>
+                    No students matching "{{self.searchText}}" were found.
+                  </md-not-found>
+                </md-autocomplete>
+              </div>
+          </md-list>
+      </form>
+
+      <!--  -->
+        <div layout="row" layout-padding>
+            <div flex layout="column" layout-align="center center">
+                <h2 translate>START-DATE</h2>
+                <md-datepicker ng-model="vm.start" md-placeholder="'START-DATE' | translate"></md-datepicker>
+            </div>
+            <div layout="column" layout-align="center center">
+                <md-icon style="font-size:2.4em" md-font-icon="zmdi zmdi-long-arrow-right"></md-icon>
+            </div>
+            <div flex layout="column" layout-align="center center">
+                <h2 translate>END-DATE</h2>
+                <md-datepicker ng-model="vm.end" md-placeholder="'END-DATE' | translate"></md-datepicker>
+            </div>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="vm.cancelClick()" aria-label="{{'CANCEL' | translate}}" translate="CANCEL"></md-button>
+        <md-button ng-click="vm.okClick()" class="md-primary" aria-label="{{GENERAL.OK | translate}}" translate="OK"></md-button>
+    </md-dialog-actions>
+</md-dialog>

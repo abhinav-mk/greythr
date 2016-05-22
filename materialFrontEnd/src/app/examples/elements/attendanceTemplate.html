@@ -1,0 +1,53 @@
+<md-sidenav flex layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="example-left">
+    <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Class</h1>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <md-list class='class-list'>
+            <md-item ng-repeat="item in classList">
+                <md-item-content>
+                    <md-button ng-click="classSelected(item.filter);" ui-sref="triangular.admin-default.attendance.content({item:item.filter, section: item.section})" ng-class="{'selected' : item === selected }">
+                      {{item.name}}
+                    </md-button>
+                </md-item-content>
+            </md-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+<button class="md-icon-button md-button ng-scope md-white-cyan-theme md-ink-ripple" type="button" ng-init="openSidebar('example-left')" ng-click="openSidebar('example-left')" aria-label="side navigation">
+    <md-icon md-font-icon="zmdi zmdi-menu" class="ng-isolate-scope md-cyan-theme material-icons zmdi zmdi-format-indent-increase" aria-hidden="true"></md-icon>
+</button>
+
+
+<div ui-view>
+  <!-- <md-card ng-repeat="item in classList">
+      <md-card-title>
+        <md-card-title-text>
+            <md-card layout="column">
+                <h2 class="md-display-2 font-weight-100 margin-0" flex layout-padding>{{item.name}}</h2>
+                <md-divider></md-divider>
+                <div flex="20" layout="row" layout-align="space-between center" layout-padding>
+                    <span class="md-subhead">{{calculateAverage(item.totalnumberofclassestaken)}} class(es) taken // should also include the last date here</span>
+                    <md-button class="md-icon-button" aria-label="call">
+                    </md-button>
+                </div>
+            </md-card>
+            <span class="md-subhead">Summary</span>
+          </md-card-title-text>
+      </md-card-title>
+      <md-card-content layout="row">
+        <div ng-repeat="period in item.totalnumberofclassestaken">
+          <div flex="50" class="full-width" layout="row" layout-padding>
+            <h4 flex="20" class="opacity-80 margin-0 margin-right-20 center center" translate>{{period.id}}</h4>
+            <div flex>
+              <md-progress-linear class="md-primary margin-bottom-10" md-mode="determinate" value="1"></md-progress-linear>
+              <span class="md-caption">{{period.value}} <span translate> classes marked</span></span>
+            </div>
+          </div>
+          <md-divider flex></md-divider>
+        </div>
+        <md-divider flex></md-divider>
+      </md-card-content>
+  </md-card> -->
+
+</div>

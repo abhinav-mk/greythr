@@ -1,0 +1,50 @@
+<md-sidenav flex layout="column" class="md-sidenav-left md-white frame-z2" md-component-id="example-left1">
+    <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Class</h1>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <md-list class='class-list'>
+            <md-item ng-repeat="item in classList">
+                <md-item-content>
+                    <md-button ng-click="getRightSidebar(item.filter,'example-right1')" ng-class="{'selected' : item === selected }">
+                      {{item.name}}
+                    </md-button>
+                </md-item-content>
+            </md-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+
+<md-sidenav flex layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="example-right1">
+    <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Exams</h1>
+    </md-toolbar>
+    <md-content class="md-padding">
+        <md-list class='class-list'>
+            <md-item ng-repeat="exam in examList">
+                <md-item-content>
+                    <md-button ui-sref="triangular.admin-default.marks.content({exam:exam.id,class:exam.class, section: exam.section})" ng-click="closeSideBars()" ng-class="{'selected' : exam === selected }">
+                      {{exam.name}}
+                    </md-button>
+                </md-item-content>
+            </md-item>
+        </md-list>
+    </md-content>
+    <div layout='row' id="div5">
+      
+    </div>
+</md-sidenav>
+
+
+<button class="md-icon-button md-button ng-scope md-white-cyan-theme md-ink-ripple" type="button" ng-init="openSidebar('example-left1')" ng-click="openSidebar('example-left1')" aria-label="side navigation">
+    <md-icon md-font-icon="zmdi zmdi-menu" class="ng-isolate-scope md-cyan-theme material-icons zmdi zmdi-format-indent-increase" aria-hidden="true"></md-icon>
+</button>
+
+
+
+<div ui-view>
+<div id="chartgroup">
+    
+</div>
+    <!-- <div id="curve_chart" style="width: 900px; height: 500px"></div> -->
+</div>

@@ -1,0 +1,101 @@
+<md-card flex="90" class="ng-scope md-cyan-theme flex-90">
+    <div ng-controller="AdministrationUserEditController as vm" class="ng-scope">
+    	<md-content class="md-padding" layout="column">
+	            <h3>User Details</h3>
+	            <form>
+	                <md-input-container class="md-block">
+	                    <label>Name</label>
+	                    <input type="text" ng-model="user_name">
+	                </md-input-container>
+	                <md-input-container class="md-block">
+	                    <label>Roll Number</label>
+	                    <input type="text" ng-model="user_rollno" ng-disabled="privilege">
+	                </md-input-container>
+	                <md-input-container class="md-block">
+	                <!--  --><label>Role</label><br>
+	                    <md-radio-group ng-model="user_role" class="md-primary">
+        					<md-radio-button ng-repeat="d in roles_list"
+                         		ng-value="d"
+                         		ng-disabled="privilege"
+                         		ng-class="{'md-align-top-left': $index==1}" >
+                         		 {{ d }}<br/>
+                         	</md-radio-button>
+                         </md-radio-group>
+	                </md-input-container>
+	                <md-input-container class="md-block">
+	                    <label>Email</label>
+	                    <input type="text" ng-model="user_email">
+	                </md-input-container>
+	                <md-input-container class="md-block">
+	                    <label>Phone Number</label>
+	                    <input type="text" ng-model="user_phno">
+	                </md-input-container>
+	                <div class="md-block">
+	                <style type="text/css">
+			              	.chipsdemoCustomInputs md-content.autocomplete {
+							  min-height: 200px; }
+
+							.chipsdemoCustomInputs input[type=number] {
+							  width: 110px; }
+
+							.chipsdemoCustomInputs .veggie-option {
+							  float: left;
+							  width: 100px;
+							  box-sizing: border-box;
+							  padding: 0 8px; }
+
+							.chipsdemoCustomInputs .veggie-option .md-item-text {
+							  padding: 8px;
+							  background: #f0f0f0;
+							  border-radius: 3px; }
+
+							.chipsdemoCustomInputs .veggie-option .md-item-text h3,
+							.chipsdemoCustomInputs .veggie-option .md-item-text p {
+							  padding: 0;
+							  margin: 0; }
+			              </style>
+
+	                    <label>Class and Section</label>
+	                    <div flex="50" ng-repeat="item in classlist">
+			              <md-checkbox ng-checked="exists(item, user_cs)" ng-click="toggle(item, user_cs)" ng-disabled="privilege">
+			                {{ item }}
+			              </md-checkbox>
+			              <md-content class="md-padding" layout="column" ng-if="exists(item, user_cs) && !privilege">
+
+						    <md-chips ng-model="selectedVegetables[$index]" md-autocomplete-snap="" md-transform-chip="transformChip($chip)" md-require-match="autocompleteDemoRequireMatch" ng-disabled="privilege">
+						      <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="itm in querySearch(searchText, item)" md-item-text="itm" placeholder="Add subject(s)">
+						        <span md-highlight-text="searchText">{{itm}}</span>
+						      </md-autocomplete>
+						      <md-chip-template>
+						        <span>
+						          <strong>{{$chip}}</strong>
+						        </span>
+						      </md-chip-template>
+						    </md-chips>
+
+						    <br>
+						    <h2 class="md-title">Subjects</h2>
+
+						    <md-list>
+						      <md-list-item class="md-0-line veggie-option" ng-repeat="veg in vegetables[$index]" layout="row" layout-wrap="">
+						        <div class="md-item-text md-whiteframe-z1" flex="">
+						          <h5>{{veg}}</h5>
+						        </div>
+						      </md-list-item>
+						    </md-list>
+
+						  </md-content>
+			  
+			            </div>
+	                </div>
+	                <hr>
+	                <div layout="row" layout-align="center">
+	                    <md-button ng-click="editUserData()">Update</md-button>
+	                </div>
+	                <div layout="row" layout-align="center">
+	                    <md-button ng-click="cancelEdit()">Cancel</md-button>
+	                </div>
+	            </form>
+	    </md-content>        
+    </div>
+</md-card> 

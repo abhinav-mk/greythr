@@ -1,0 +1,61 @@
+<md-card flex="90" class="ng-scope md-cyan-theme flex-90">
+    <div ng-controller="SchoolCreateController as vm" class="ng-scope">
+    	<md-content class="md-padding" layout="column">
+    	<h3>New School</h3>
+	            <form>
+	                <md-input-container class="md-block">
+	                    <label>Name</label>
+	                    <input type="text" ng-model="school_name">
+	                </md-input-container>
+	               <!--  <md-divider></md-divider>
+	                <md-input-container class="md-block">
+	                <label>Roles</label><br>
+	                <md-list ng-cloak>
+					  <md-list-item ng-repeat="role in school_roles">
+					    <p> {{ role }} </p>
+					  </md-list-item>
+					</md-list>    
+	                </md-input-container> -->
+	               <!--  <md-divider></md-divider>
+	                <md-input-container class="md-block">
+	                <label>Permissions</label><br>
+	                <md-list ng-cloak>
+					  <md-list-item ng-repeat="permission in school_permissions">
+					    <p> {{ permission }} </p>
+					  </md-list-item>
+					</md-list>    
+	                </md-input-container>
+	                <md-divider></md-divider>
+	                <md-input-container class="md-block">
+	                <label>Class and section</label><br>
+	                <md-list ng-cloak>
+					  <md-list-item ng-repeat="cs in school_cs">
+					    <p> {{ cs }} </p>
+					  </md-list-item>
+					</md-list>    
+	                </md-input-container> -->
+	                <hr>
+	                <h4>Admin Details</h4>
+	                <md-input-container class="md-block">
+	                    <label>Name</label>
+	                    <input type="text" ng-model="admin_name">
+	                </md-input-container>
+	                <md-input-container class="md-block">
+	                    <label>Email</label>
+	                    <input type="text" ng-model="admin_email">
+	                </md-input-container>
+	                <md-input-container class="md-block">
+	                    <label>password</label>
+	                    <input type="text" ng-model="admin_password">
+	                </md-input-container>
+	                <hr>
+	                <div layout="row" layout-align="center">
+	                    <md-button ng-click="createSchool()">Create School</md-button>
+	                </div>
+	                <div layout="row" layout-align="center">
+	                    <md-button ng-click="cancelCreateSchool()">Cancel</md-button>
+	                </div>
+	            </form>
+	    </md-content>        
+    </div>
+</md-card> 

@@ -1,0 +1,14 @@
+<div class="lock-size" layout="row" layout-align="center center">
+    <md-fab-speed-dial style="position: fixed; bottom: 40; right: 20" md-open="isOpen" md-direction="up" class="md-scale md-fab-bottom-right">
+        <md-fab-trigger>
+          <md-button aria-label="menu" class="md-fab md-primary">
+            <md-icon md-font-icon="zmdi zmdi-navigation"></md-icon>
+          </md-button>
+        </md-fab-trigger>
+        <md-fab-actions>
+          <md-button aria-label="{{button.label}}" ui-sref='{{button.state}}' data-ng-click="callFunction(button.function, $event, button.name, button.templateUrl)" class="{{button.class}}" ng-repeat="button in fabButtonList">
+            <md-icon md-font-icon="{{button.icon}}"></md-icon>
+          </md-button>
+        </md-fab-actions>
+    </md-fab-speed-dial>
+</div>

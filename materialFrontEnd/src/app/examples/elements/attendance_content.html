@@ -1,0 +1,48 @@
+<div layout-align="center center" ng-controller="AttendanceContentController">
+    <div flex='100' id='attendanceCardsOuterDiv' layout="column">
+      <!-- <md-card>
+          <md-card-title>
+            <md-card-title-text>
+                <md-card layout="column">
+                    <h2 class="md-display-2 font-weight-100 margin-0" flex layout-padding>{{currentClass.name}}</h2>
+                    <md-divider></md-divider>
+                    <div flex="20" layout="row" layout-align="space-between center" layout-padding>
+                        <span class="md-subhead">{{calculateAverage(currentClass.totalnumberofclassestaken)}} class(es) taken // should also include the last date here</span>
+                        <md-button class="md-icon-button" aria-label="call">
+                        </md-button>
+                    </div>
+                </md-card>
+                <span class="md-subhead">Summary</span>
+              </md-card-title-text>
+          </md-card-title>
+          <md-card-content layout="row">
+            <div ng-repeat="period in currentClass.totalnumberofclassestaken">
+              <div flex="50" class="full-width" layout="row" layout-padding>
+                <h4 flex="20" class="opacity-80 margin-0 margin-right-20 center center" translate>{{period.id}}</h4>
+                <div flex>
+                  <md-progress-linear class="md-primary margin-bottom-10" md-mode="determinate" value="1"></md-progress-linear>
+                  <span class="md-caption">{{period.value}} <span translate> classes marked</span></span>
+                </div>
+              </div>
+              <md-divider flex></md-divider>
+            </div>
+            <md-divider flex></md-divider>
+          </md-card-content>
+      </md-card> -->
+    </div>
+
+        <div class="lock-size" layout="row" layout-align="center center">
+            <md-fab-speed-dial style="position: fixed; bottom: 40; right: 20" md-open="isOpen" md-direction="up" class="md-scale md-fab-bottom-right">
+                <md-fab-trigger>
+                  <md-button aria-label="menu" class="md-fab md-primary">
+                    <md-icon md-font-icon="zmdi zmdi-navigation"></md-icon>
+                  </md-button>
+                </md-fab-trigger>
+                <md-fab-actions>
+                  <md-button aria-label="{{button.label}}" ui-sref='{{button.state}}' data-ng-click="callFunction(button.function, $event, button.name, button.state, button.templateUrl, button.controller)" class="{{button.class}}" ng-repeat="button in fabButtonList">
+                    <md-icon md-font-icon="{{button.icon}}"></md-icon>
+                  </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+</div>
